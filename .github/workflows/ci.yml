@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check .
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: System tools
+        run: sudo apt-get update && sudo apt-get install -y libzbar0 libimage-exiftool-perl
+      - name: Install
+        run: pip install -e ".[dev]" pyzbar oletools
+      - name: Tests (offline + local server) with coverage
+        run: pytest -q --cov=phishscan --cov-report=term-missing --cov-fail-under=75
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build wheel
+        run: pip install build && python -m build
+      - name: Install wheel in clean venv and run
+        run: |
+          python -m venv /tmp/v
+          /tmp/v/bin/pip install dist/*.whl
+          /tmp/v/bin/phishscan --version
+          /tmp/v/bin/phishscan "hxxp://bkash-verify[.]top/pin" --offline --quiet || test $? -le 2
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t phishscan .
+      - name: Smoke test
+        run: |
+          docker run --rm phishscan --version
+          docker run --rm phishscan "hxxp://bkash-verify[.]top/pin" --offline --quiet --evidence /tmp/ev || test $? -le 2

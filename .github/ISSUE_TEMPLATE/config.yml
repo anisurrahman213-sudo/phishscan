@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: নিরাপত্তা দুর্বলতা (গোপনে জানান)
+    url: https://github.com/YOUR-USERNAME/phishscan/security/advisories/new
+    about: টুলের নিরাপত্তা সমস্যা পাবলিক issue-তে লিখবেন না

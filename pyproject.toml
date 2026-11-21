@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishscan"
+version = "3.1.0"
+description = "Phishing link / email / file analyzer with Bengali reports — defensive use only"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "YOUR-NAME" }]
+keywords = ["phishing", "security", "threat-intelligence", "email-analysis", "ioc", "bangladesh"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Natural Language :: Bengali",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+dependencies = ["requests>=2.25"]
+
+[project.optional-dependencies]
+# সব ঐচ্ছিক বিশ্লেষণ: QR, ম্যাক্রো, APK, Outlook .msg
+full = ["pillow", "pyzbar", "oletools", "extract-msg", "androguard", "opencv-python-headless"]
+dev = ["pytest", "pytest-cov", "ruff", "qrcode", "pillow", "build"]
+
+[project.scripts]
+phishscan = "phishscan.cli:run"
+
+[project.urls]
+Homepage = "https://github.com/YOUR-USERNAME/phishscan"
+Issues = "https://github.com/YOUR-USERNAME/phishscan/issues"
+
+[tool.setuptools]
+packages = ["phishscan"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning:oletools.*", "ignore::DeprecationWarning:pyparsing.*"]
+
+[tool.ruff]
+line-length = 160
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP", "S"]
+ignore = [
+    "E501",            # লম্বা লাইন — বাংলা বার্তা
+    "S310",            # শুধু http/https URL খোলা হয়
+    "S603", "S607",    # whois/exiftool/zbarimg/chromium — নির্দিষ্ট আর্গুমেন্ট তালিকা, shell নয়
+    "S110", "S112",    # ঐচ্ছিক টুল ব্যর্থ হলে ইচ্ছাকৃতভাবে চুপ থাকা
+    "S501",            # ফিশিং সাইটের ভাঙা সার্টিফিকেট সত্ত্বেও পেজ পড়তে হয় (SSL আলাদাভাবে যাচাই হয়)
+    "S324",            # MD5/SHA1 শুধু IOC হ্যাশ হিসেবে, নিরাপত্তার জন্য নয়
+    "S108",            # tempfile.mkdtemp ব্যবহৃত
+    "B904", "UP031", "UP032",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S105", "E702", "B011"]

@@ -1,0 +1,19 @@
+name: বাগ রিপোর্ট
+description: টুল ক্র্যাশ করেছে বা ভুল কাজ করছে
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: কী হয়েছে, আর কী হওয়ার কথা ছিল
+    validations:
+      required: true
+  - type: textarea
+    id: cmd
+    attributes:
+      label: চালানো কমান্ড ও পুরো ত্রুটি বার্তা (Traceback)
+      render: text
+  - type: input
+    id: env
+    attributes:
+      label: OS, Python ভার্সন, phishscan --version

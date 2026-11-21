@@ -1,0 +1,32 @@
+name: ভুল ফলাফল (False positive / negative)
+description: আসল সাইটকে ফিশিং বলেছে, অথবা ফিশিং ধরতে পারেনি
+labels: ["detection"]
+body:
+  - type: markdown
+    attributes:
+      value: "⚠️ লিংক অবশ্যই ডিফ্যাং করে দিন, যেমন `hxxps://bad-site[.]top/login`। ব্যক্তিগত তথ্য, ইমেইল ঠিকানা বা API key দেবেন না।"
+  - type: dropdown
+    id: kind
+    attributes:
+      label: সমস্যার ধরন
+      options:
+        - আসল সাইট/ফাইলকে ফিশিং বলেছে (false positive)
+        - ফিশিং ধরতে পারেনি (false negative)
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: ডিফ্যাং করা লিংক বা ফাইলের ধরন
+      placeholder: "hxxps://example[.]top/login  অথবা  .eml / .apk / .pdf"
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: phishscan --quiet আউটপুট ও স্কোর
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: ভার্সন (phishscan --version)

@@ -1,0 +1,25 @@
+# স্ক্যানের প্রমাণ — এতে আসল ফিশিং লিংক/ব্যক্তিগত ইমেইল থাকতে পারে, GitHub-এ দেবেন না
+phishscan_evidence/
+examples/
+*.eml
+*.msg
+
+# API key কখনো কমিট করবেন না
+.env
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# বিল্ড ও টুল
+dist/
+build/
+*.egg-info/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/

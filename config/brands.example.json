@@ -1,0 +1,6 @@
+{
+  "_নির্দেশনা": "এই ফাইল কপি করে ~/.config/phishscan/brands.json নামে রাখুন, অথবা --brands দিয়ে দিন। _ দিয়ে শুরু কী উপেক্ষিত হয়।",
+  "shapnobank": ["shapnobank.com.bd"],
+  "myuniversity": ["myuniversity.edu.bd", "myuni.ac.bd"],
+  "mycompany": ["mycompany.com", "mycompany-mail.com"]
+}
