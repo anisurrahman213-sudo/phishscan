@@ -2,8 +2,8 @@
 
 # 🛡️ PhishScan — ফিশিং বিশ্লেষক
 
-[![CI](https://github.com/anisurrahman213-sudo/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR-USERNAME/phishscan/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/anisurrahman213-sudo/phishscan/actions/workflows/codeql.yml/badge.svg)](https://github.com/YOUR-USERNAME/phishscan/actions/workflows/codeql.yml)
+[![CI](https://github.com/anisurrahman213-sudo/actions/workflows/ci.yml/badge.svg)](https://github.com/anisurrahman213-sudo/phishscan/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/anisurrahman213-sudo/phishscan/actions/workflows/codeql.yml/badge.svg)](https://github.com/anisurrahman213-sudo/phishscan/actions/workflows/codeql.yml)
 ![python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![tests](https://img.shields.io/badge/tests-85%20passed-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-82%25-green)
@@ -67,7 +67,7 @@
 
 ### ক) ইনস্টলার স্ক্রিপ্ট (Kali / Ubuntu / Debian), নতুনদের জন্য প্রস্তাবিত
 ```bash
-git clone https://github.com/YOUR-USERNAME/phishscan.git
+git clone https://github.com/anisurrahman213-sudo/phishscan.git
 cd phishscan
 chmod +x install.sh
 ./install.sh            # sudo দিয়ে চালাবেন না, দরকার হলে নিজেই পাসওয়ার্ড চাইবে
@@ -78,13 +78,13 @@ phishscan --version     # "PhishScan 3.1.0" দেখালে সফল
 ### খ) pipx (যেকোনো Linux/macOS, সবচেয়ে পরিষ্কার)
 ```bash
 sudo apt install pipx && pipx ensurepath        # macOS: brew install pipx
-pipx install "git+https://github.com/YOUR-USERNAME/phishscan.git"
+pipx install "git+https://github.com/anisurrahman213-sudo/phishscan.git"
 pipx inject phishscan pillow pyzbar oletools extract-msg androguard   # ঐচ্ছিক
 ```
 
 ### গ) pip (Python 3.9+)
 ```bash
-pip install "phishscan[full] @ git+https://github.com/YOUR-USERNAME/phishscan.git"
+pip install "phishscan[full] @ git+https://github.com/anisurrahman213-sudo/phishscan.git"
 ```
 > Kali-তে pip "externally-managed-environment" ত্রুটি দিলে উপায় ক বা খ ব্যবহার করুন।
 

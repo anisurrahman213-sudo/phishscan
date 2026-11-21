@@ -2,8 +2,8 @@
 
 # 🛡️ PhishScan — Phishing Analyzer
 
-[![CI](https://github.com/anisurrahman213-sudo/phishscan/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR-USERNAME/phishscan/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/anisurrahman213-sudo/phishscan/actions/workflows/codeql.yml/badge.svg)](https://github.com/YOUR-USERNAME/phishscan/actions/workflows/codeql.yml)
+[![CI](https://github.com/anisurrahman213-sudo/phishscan/actions/workflows/ci.yml/badge.svg)](https://github.com/anisurrahman213-sudo/phishscan/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/anisurrahman213-sudo/phishscan/actions/workflows/codeql.yml/badge.svg)](https://github.com/anisurrahman213-sudo/phishscan/actions/workflows/codeql.yml)
 ![python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![tests](https://img.shields.io/badge/tests-86%20passed-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-82%25-green)
@@ -71,7 +71,7 @@ Four ways — pick one.
 
 ### A) Installer script (Kali / Ubuntu / Debian), recommended for beginners
 ```bash
-git clone https://github.com/YOUR-USERNAME/phishscan.git
+git clone https://github.com/anisurrahman213-sudo/phishscan.git
 cd phishscan
 chmod +x install.sh
 ./install.sh            # do NOT run with sudo; it will ask for a password if needed
@@ -82,13 +82,13 @@ Installs the system tools (whois, exiftool, zbar) and all optional packages itse
 ### B) pipx (any Linux/macOS, cleanest)
 ```bash
 sudo apt install pipx && pipx ensurepath        # macOS: brew install pipx
-pipx install "git+https://github.com/YOUR-USERNAME/phishscan.git"
+pipx install "git+https://github.com/anisurrahman213-sudo/phishscan.git"
 pipx inject phishscan pillow pyzbar oletools extract-msg androguard   # optional
 ```
 
 ### C) pip (Python 3.9+)
 ```bash
-pip install "phishscan[full] @ git+https://github.com/YOUR-USERNAME/phishscan.git"
+pip install "phishscan[full] @ git+https://github.com/anisurrahman213-sudo/phishscan.git"
 ```
 > On Kali, if pip gives an "externally-managed-environment" error, use method A or B.
 
