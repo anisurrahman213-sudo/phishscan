@@ -4,7 +4,7 @@
 #   docker run --rm -v "$PWD:/data" phishscan suspicious.eml
 #   docker run --rm -e VT_API_KEY phishscan "hxxps://bad[.]top/login"
 #
-FROM python:3.12-slim
+FROM python:3.15-slim
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends whois libimage-exiftool-perl libzbar0 zbar-tools p7zip-full ca-certificates \
